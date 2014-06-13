@@ -26,8 +26,8 @@ package object parsing {
 
 package parsing {
 
-  private[can] sealed trait Result
-  private[can] object Result {
+  sealed trait Result
+  object Result {
     case class NeedMoreData(next: Parser) extends Result
     case class Emit(part: HttpMessagePart, closeAfterResponseCompletion: Boolean, continue: () ⇒ Result) extends Result
     case class Expect100Continue(continue: () ⇒ Result) extends Result

@@ -34,8 +34,8 @@ import CharUtils._
  * For the life-time of one HTTP connection an instance of this class is owned by the connection, i.e. not shared
  * with other connections. After the connection is closed it may be used by subsequent connections.
  */
-private[parsing] final class HttpHeaderParser private (val settings: ParserSettings,
-                                                       warnOnIllegalHeader: ErrorInfo ⇒ Unit,
+final class HttpHeaderParser private (val settings: ParserSettings,
+                                      warnOnIllegalHeader: ErrorInfo ⇒ Unit,
     // format: OFF
 
     // The core of this parser/cache is a mutable space-efficient ternary trie (prefix tree) structure, whose data are
@@ -379,7 +379,7 @@ private[parsing] final class HttpHeaderParser private (val settings: ParserSetti
   def formatSizes: String = s"$nodeCount nodes, ${branchDataCount / 3} nodeData rows, $valueCount values"
 }
 
-private object HttpHeaderParser {
+object HttpHeaderParser {
   import SpecializedHeaderValueParsers._
 
   object EmptyHeader extends HttpHeader {

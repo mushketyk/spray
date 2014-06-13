@@ -22,7 +22,7 @@ import spray.http._
 import HttpHeaders._
 import CharUtils._
 
-private[can] class HttpResponsePartParser(_settings: ParserSettings)(_headerParser: HttpHeaderParser = HttpHeaderParser(_settings))
+class HttpResponsePartParser(_settings: ParserSettings)(_headerParser: HttpHeaderParser = HttpHeaderParser(_settings))
     extends HttpMessagePartParser(_settings, _headerParser) {
   import HttpResponsePartParser.NoMethod
 
